@@ -82,15 +82,7 @@ app.get("/updates",function(req,res){
         }
     })
 });
-// Careers Page
-app.get("/careers",function(req, res){
-    res.render("careers",{show:show});
-});
-app.post("/careers/:dept",function(req, res)
-{
-    var job = req.params.id;
 
-});
 app.listen(3000,function(){
     console.log("Server is running!");
 });
