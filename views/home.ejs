@@ -1,0 +1,65 @@
+<%-include("partials/header.ejs")%>
+<div class="container-fluid homef" style="background-image: url(<%=article[0].Image%>);">
+    <div class="row">
+        <div class="col-md-4" id="homef">
+            <div class="container"><h1 class="display-3 text-left"><%=article[0].Title%></h1></div>
+            <a class="ui inverted button" href="/updates/<%=article[0].Title%>">Learn More</a>
+        </div>
+        <div class="col-md-8"></div>
+    </div>
+    <i class="fas fa-chevron-down"></i>
+</div>
+<div class="container-fluid home1" style="background-image: url(<%=article[1].Image%>);">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-8" id="home1">
+            <div class="container">
+                <h1 class="display-3 text-right"><%=article[1].Title%></h1>
+                <a class="ui inverted button" href="/updates/<%=article[1].Title%>">Learn More</a> 
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid home2" style="background-image: url(<%=article[2].Image%>);">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-8" id="home2">
+            <div class="container">
+                <h1 class="display-3 text-right"><%=article[2].Title%></h1>
+                <a class="ui inverted button" href="/updates/<%=article[2].Title%>">Learn More</a> 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var lastScroll = 0;
+    $(document).scroll(function(){
+    var st = $(this).scrollTop();
+    var prop = {
+        "opacity" : "1",
+        "transition": "opacity",
+        "transition-duration":"0.7s",
+        "transition-timing-function":"linear",
+    };
+    if($("#home1"))
+    {
+        if((st >= $("#home1").position().top - 300))
+    {
+        $("#home1").css(prop);
+       
+    }
+    }
+    if($("#home2"))
+    {
+        if((st >= $("#home2").position().top - 300))
+    {
+        $("#home2").css(prop);
+    }
+    }
+    lastScroll = st;
+    })
+</script>
+<%-include("partials/footer.ejs")%>
+
