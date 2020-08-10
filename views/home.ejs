@@ -1,14 +1,23 @@
 <%-include("partials/header.ejs")%>
-<div class="container-fluid homef" style="background-image: url(<%=article[0].Image%>);">
+<section id="luxy" data-simplebar>
+<div class="animsition"
+data-animsition-in-class="zoom-in-sm"
+data-animsition-in-duration="1000"
+data-animsition-out-class="zoom-out-sm"
+data-animsition-out-duration="800">
+<div class="container-fluid homef" style="background-image: url(<%=article[0].Image%>);margin-top: 10%;">
     <div class="row">
         <div class="col-md-4" id="homef">
-            <div class="container"><h1 class="display-3 text-left"><%=article[0].Title%></h1></div>
-            <a class="ui inverted button" href="/updates/<%=article[0].Title%>">Learn More</a>
+            <div class="container"><h1 class="display-3 text-left animate-this"><%=article[0].Title%></h1></div>
+            <a class="ui inverted button animate-this" href="/updates/<%=article[0].Title%>">Learn More</a>
         </div>
         <div class="col-md-8"></div>
     </div>
     <i class="fas fa-chevron-down"></i>
 </div>
+</div>
+
+
 <div class="container-fluid home1" style="background-image: url(<%=article[1].Image%>);">
     <div class="row">
         <div class="col-md-4"></div>
@@ -31,8 +40,7 @@
         </div>
     </div>
 </div>
-
-
+</section>
 <script>
     var lastScroll = 0;
     $(document).scroll(function(){

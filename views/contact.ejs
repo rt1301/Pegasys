@@ -1,0 +1,111 @@
+<%-include("partials/header.ejs")%>
+<section id="luxy">
+    <div class="animsition"
+    data-animsition-in-class="zoom-in-sm"
+    data-animsition-in-duration="1000"
+    data-animsition-out-class="zoom-out-sm"
+    data-animsition-out-duration="800">
+    <div class="container">
+        <%if(success && success.length>0){%>
+            <div class="alert alert-success" role="alert" style="background-color:rgba(33, 33, 36, 0.8);color: white;font-size: 24px;text-align: center;margin-top: 10vh;"><%=success%></div>
+        <%}%>	
+    </div>
+    <div id="contact-us" class="container-fluid" style="height: 85vh;margin: 0;padding: 0;margin-top: 10vh;">
+        <img class="img-fluid" src="/images/Contact.jpg" alt="" id="contact" style="margin: 0;">
+        <div class="display-2 image-text-heading">Any Questions?</div>
+        <div class="display-4 image-text-sub">Please fill out our form, and we’ll get in touch shortly.</div>
+    </div>
+</div>
+    <div id="reach_us" class="container-fluid" style="height: 100vh;">
+
+      <div class="container-contact">
+        <div class="wrapper">
+            <div class="company-info">
+                <address>
+                    <strong>Pegasys</strong>
+                    <br>
+                    <p><i class="fas fa-map-marked-alt"></i> 300 E St SW
+                    <br><span class="add">Washington, DC 20546</span></p>
+                    <i class="fas fa-mobile-alt"></i> (555) 555-5555
+                    <br>
+                    <i class="fas fa-inbox"></i> customer.service@pegasys.com
+                </address>
+                <div id="map"></div>
+            </div>
+            <div class="contact">
+                <h3 style="color: rgb(72, 94, 116);">Reach Us</h3>
+                <form action="/contact" method="POST">
+                    <p>
+                        <label>First Name</label>
+                        <input type="text" name="query[FirstName]" required autocomplete="off">
+                    </p>
+                    <p>
+                        <label>Last Name</label>
+                        <input type="text" name="query[LastName]" autocomplete="off">
+                    </p>
+                    <p>
+                        <label>Email Address</label>
+                        <input type="email" name="query[Email]" required autocomplete="off">
+                    </p>
+                    <p>
+                        <label>Phone Number</label>
+                        <input type="text" name="query[Phone]" required autocomplete="off">
+                    </p>
+                    <p class="full">
+                        <label>Message</label>
+                        <textarea name="query[Message]" id="" cols="30" rows="10" required></textarea>
+                    </p>
+                    <p class="full">
+                        <button type="submit">Submit</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+<script>
+  // "use strict";
+let map;
+function initMap() 
+{
+// Map options
+let nasa = new google.maps.LatLng(38.8831, -77.0163);
+map = new google.maps.Map(document.getElementById("map"), 
+{
+  center: nasa,
+  zoom: 9
+});
+
+// Info tab
+var info = new google.maps.InfoWindow({
+content: '<h3>Pegasys</h3>'
+});
+// Add Marker
+var marker = new google.maps.Marker({
+position: nasa,
+map: map,
+title: "Click to zoom",
+});
+map.addListener("center_changed", () => {
+  // 3 seconds after the center of the map has changed, pan back to the
+  // marker.
+  window.setTimeout(() => {
+    map.panTo(marker.getPosition());
+  }, 3000);
+});
+marker.addListener("click", () => {
+  map.setZoom(15);
+  map.setCenter(marker.getPosition());
+  info.open(marker.get('map'),marker);
+});
+var transitLayer = new google.maps.TransitLayer();
+transitLayer.setMap(map);
+}
+</script>
+<script defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbcEfdbR1O1Z1hbEHwXVC7bF3P_3-RLVc&callback=initMap">
+</script>
+<%-include("partials/footer.ejs")%>

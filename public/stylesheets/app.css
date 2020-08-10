@@ -1,26 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 *
 {
     color: white;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito Sans', sans-serif;
+}
+html
+{
+    height: 100%;
+}
+/* Scrollbar styling */
+/* width */
+::-webkit-scrollbar 
+{
+    width: 10px;
+} 
+/* Track */
+::-webkit-scrollbar-track 
+{
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+} 
+/* Handle */
+::-webkit-scrollbar-thumb 
+{
+    background: #4a4a4a; 
+    border-radius: 10px;
 }
 body
 {
     background-color: black;
-    margin-bottom: 5%;
-   
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    font-family: 'Nunito Sans', sans-serif;
 }
-#mainNavbar
+h1
 {
+    font-family: 'Merriweather', serif;
+}
+div.display-2,div.display-3,div.display-4
+{
+    font-family: 'Merriweather', serif;
+}
+div.rocket-feature-tagline
+{
+    font-family: 'Nunito Sans', sans-serif;
+}
+a,a.ui.inverted
+{
+    font-family: 'Nunito Sans', sans-serif;
+}
+#updates-title
+{
+    font-family: 'Merriweather', serif;
+}
+footer
+{
+    background-color: rgb(48, 48, 48);
+    color: white;
+    margin-top: auto;
+    text-align: center;
+    font-size: 1.25rem;
+    line-height: 1.6;
+}
+.footer-links
+{
+    color: white;
+}
+.footer-content
+{
+    padding:2.3em;
+
+}
+.footer-copyright
+{
+    background-color: rgb(20, 20, 20);
+    padding:0.5em;
+}
+/*========================Navbar Styling=============================  */
+/* .logo
+{
+    z-index: 10;
+} */
+nav
+{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
     height: 10vh;
+    background-color: black;
+    font-family: 'Merriweather', serif;
 }
-.nav-item
+.nav-links
 {
-    text-align: right;
+    display: flex;
+    justify-content: space-around;
+    width: 45%;
+    list-style: none;
+}
+.navlink
+{
+    color: rgb(262, 262, 262);
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-size: 20px;
+    font-family: 'Merriweather', serif;
+}
+.burger
+{
+    cursor: pointer;
+    z-index: 2;
+}
+.burger div
+{
+    width: 29px;
+    height: 3px;
+    background-color: rgb(262, 262, 262);
+    margin:5px;
+    border-radius: 7px;
+    transition: all 0.3s ease;
+}
+
+/* Side Menu */
+.side-nav
+{
+    height: 100%;
+    width: 0px;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    z-index: 1;
+    top: 0;
+    right: 0%;
+    background-color: #111;
+    opacity: 0.7;
+    overflow-x: hidden;
+    padding-top: 60px;
+}
+.side-nav
+{
+    clip-path: circle(100px at 100% 0%);
+    -webkit-clip-path:  circle(100px at 100% 0%);
+    transition: all 1s ease;
+}
+.side-nav.open
+{
+    clip-path: circle(900px at 100% 0%);
+    -webkit-clip-path:  circle(1100px at 100% 0%);
+    pointer-events: all;
+}
+.side-nav a
+{
+
+    padding: 10px 10px 10px 30px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 20px;
+    color: #ccc;
+    display: block;
+    opacity: 0;
+    z-index: 5;
+    font-family: 'Merriweather', serif;
+}
+.side-nav a:hover
+{
+    color: #fff;
+}
+a.side-link-collapse
+{
+    display: none;
+}
+.toggle .line1
+{
+    transform: rotate(-45deg) translate(-5px,6px);
+}
+.toggle .line2
+{
+    opacity: 0;
+}
+.toggle .line3
+{
+    transform: rotate(45deg) translate(-5px,-6px);
+}
+.blur
+{
+    filter: blur(8px);
+  -webkit-filter: blur(8px);
+}
+/* ================================================================== */
+button:focus
+{
+    outline: 0;
 }
 div.homef
 {
+    height: 90vh;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    background-size: 100% auto;
 }
 div.homef>div.row>div.col-md-4 h1
 {
@@ -33,19 +216,29 @@ div.homef>div.row>div.col-md-4 a
     margin-top: 10%;
     margin-left: 8.5%;
 }
+#mars-mission>a
+{
+    font-size: x-large;
+    margin-top: 5%;
+}
 div.home1
 {
+    height: 90vh;
     margin-top: 100px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    background-size: 100% auto;
 }
 div.home2
 {
+    height: 90vh;
     padding: 100px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    margin-bottom: 9.8%;
+    background-size: 100% auto;
 }
 div.home1>div.row>div.col-md-8 a
 {
@@ -77,7 +270,7 @@ div.home2>div.row>div.col-md-8 h1
 {
     opacity: 0;
 }
-#homef,#image,#landing
+#homef,#landing,.homef
 {
     animation-name: fade;
     animation-duration: 2s;
@@ -89,8 +282,11 @@ div.home2>div.row>div.col-md-8 h1
     font-size: larger;
     color: white;
 }
-
-#mainNavbar>div.container>a.nav-link::after,#update-link::after
+#updates-title
+{
+    font-size: 1.5rem;
+}
+#navbar>ul>li>a.navlink::after,#update-link::after,#side-menu>a.side-link::after
 {
     content: '';
     width: 0px;
@@ -99,7 +295,7 @@ div.home2>div.row>div.col-md-8 h1
     background: white;
     transition: 300ms;
 }
-#mainNavbar>div.container>a.nav-link:hover::after,#update-link:hover::after
+#navbar>ul>li>a.navlink:hover::after,#update-link:hover::after,#side-menu>a.side-link:hover::after
 {
     width: 100%;
 }
@@ -122,23 +318,6 @@ i.fa-chevron-down
     animation-duration:0.8s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
-}
-i.fa-pinterest-p
-{
-    font-size: 50px;
-}
-nav a
-{
-    color: white;
-}
-button.navbar-toggler
-{
-    color: white;
-}
-
-ul.navbar-nav 
-{
-   margin-left: 10%;
 }
 #article
 {
@@ -163,17 +342,165 @@ canvas
 }
 #scene
 {
-    background-image: linear-gradient(to right, #434343 0%, black 100%);
+    /* background-image: linear-gradient(to right, #434343 0%, black 100%); */
+    background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwonderfulengineering.com%2F38-best-black-wallpapers-from-around-the-world%2F%23%3A~%3Atext%3DAdvertisement&psig=AOvVaw09GXcQ6-sK-E7goQwYka8q&ust=1596971213177000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNCa8MG7i-sCFQAAAAAdAAAAABAD');
     background-size: cover;
     background-repeat: no-repeat;
+    outline: none;
     padding: 0;
 }
-
+#table-container
+{
+    margin: 20% auto;
+}
+.rocket-feature-heading
+{
+    padding-top:20%;
+    text-align: center;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.rocket-feature-tagline
+{
+    text-align: center;
+    font-weight: 500;
+    font-size: 2.1em;
+    text-transform: uppercase;
+}
+.rocket-header
+{
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+.rocket-animation-container
+{
+    margin-top: 40%; 
+    margin-bottom: 10%;
+}
+#animation>div.row>div.col-lg-8
+{
+    margin: auto;
+}
+#table
+{
+    height: 100vh;
+    margin-top: 5%;
+}
+.tabel-name
+{
+    padding-left: 10%; 
+    font-size: large;
+}
+.table-sub
+{
+    padding-left: 10%;
+}
+a
+{
+    position: relative;
+    z-index: 1;
+}
+object
+{
+    position: relative;
+    z-index: -1;
+}
+#quote
+{
+    height: 90vh;
+    margin-top: 10vh;
+    background-image: url('https://wallpaperaccess.com/full/655260.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: 100% auto;
+}
+.blockquote
+{
+    font-size: 29px;
+    line-height: 1.4em;
+}
+#mars-mission
+{
+    height: 100vh;
+    background-image: url('https://i.pinimg.com/originals/83/a0/c1/83a0c17ab972a1c6686a9b9743d52d9e.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: 100% auto;
+}
+.location
+{
+    text-transform: uppercase;
+    font-size: larger;
+    text-align: center;
+}
+.loc-name
+{
+    text-transform: uppercase;
+    font-size: 22px;
+    text-align: center;
+}
+.facility_info
+{
+    line-height: 1.6;
+    font-size: 15px;
+    text-transform: none;
+}
+#marsFeauture
+{
+    height: 85vh;
+    margin-top: 10vh;
+}
+#marsFeauture>img
+{
+    position: relative;
+    z-index: -1;
+    margin: 0;
+    height: 100%;
+}
+.title
+{
+    position: absolute;
+    z-index: 1;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%,-80%);
+    font-weight: 700;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+	             0px 8px 13px rgba(0,0,0,0.1),
+	             0px 18px 23px rgba(0,0,0,0.1);
+}
+.info_bar
+{
+    margin: 0;
+    text-align: center;
+    position: relative;
+    background-color: #4d91a6;
+    color: black;
+    text-transform: uppercase;
+    height: 5vh;
+    cursor: pointer;
+    padding: 8px 0;
+    font-size: 20px;
+    width: 100%;
+}
+#rocket-svg
+{
+    margin-top:17%;
+    color:black;
+}
+.container-bg
+{
+    background-color: rgb(20, 20, 20);
+    border-radius:15px;
+    box-shadow: 0 0 20px 0 rgba(69, 69, 70, 0.8);
+    padding: 10px;
+}
 /* Table Styling */
 table
 {
     width: 80%;
-    /* margin-top: 30px; */
     margin-left: 10%;
     border-collapse: collapse;
     border-spacing: 0;
@@ -217,14 +544,328 @@ td
     display: table-cell;
     vertical-align: inherit;
 }
-/* Career Form */
-#career-form
+/* ===================================== Carousel =========================================== */
+#carousal-rocket
 {
-    background-color:black;
+    margin-bottom: 5%;
+}
+.Carousel
+{
+    position: relative;
+    height: 600px;
+    width: 80%;
+    margin: 0 auto;
+}
+.carousel__image
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: 0;
+}
+.carousel__track-container
+{
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.carousel__track
+{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+    height: 90%;
+    transition: transform 0.5s ease-in-out;
+}
+.carousel__slide
+{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+.carousel__button
+{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: 0;
+    font-size: 28px;
+    cursor: pointer;
+    outline: none;
+}
+.carousel__text
+{
+    position: absolute;
+    padding: 10px 0;
+    font-size: 18px;
+    left: 50%;
+    transform: translateX(-50%);
     color: white;
-    border-color: white;
+}
+.carousel__text--left
+{
+    position: absolute;
+    left: 8%;
+    top: 65%;
+    transform: translateX(-8%);
+    transform: translateY(-65%);
+    font-size: 15px;
+    width: 30%;
+}
+.carousel__header
+{
+    position: absolute;
+    left: 11%;
+    top: 22%;
+    transform: translateY(-22%);
+    transform: translateX(-11%);
+    text-transform: uppercase;
+    font-size: 40px;
+    font-weight: 600;
+    width: 30%;
+}
+.date
+{
+    position: absolute;
+    left: 9.5%;
+    top: 20%;
+    transform: translate(-9.5%,-20%);
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 500;
+}
+.left
+{
+    left: -40px;
+}
+.right
+{
+    right: -40px;
+}
+.carousel__nav
+{
+
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+.carousel__indicator
+{
+    border: none;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255);
+    margin: 0 12px;
+    cursor: pointer;
+    outline: none;
+}
+.carousel__indicator.current-slide
+{
+    background-color: rgba(200, 200, 200, 0.9);
+}
+.is-hidden
+{
+    display: none;
+}
+.maven_text
+{
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    right: 10%;
+    transform: translate(10%,-50%);
+    text-transform: capitalize;
+    font-size: 22px;
+    height: 100px;
+    width: 400px;
+    line-height: 1.6;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+}
+#contact-us
+{
+    text-align: center;
+}
+#contact
+{
+    height: 100%;
+    position: relative;
+    z-index: 0;
+}
+#facilities
+{
+    margin-bottom: 20%;
+}
+.image-text-heading
+{
+    position: absolute;
+    z-index: 2;
+    top: 30%;
+    left: 7%;
+    font-size: 70px;
+    transform: translate( -7%,-30%);
+    font-weight: bold;
+    text-transform: capitalize;
+}
+.image-text-sub
+{
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 7%;
+    transform: translate(-7%,-50%);
+    font-size: 30px;
+    letter-spacing: 0.3px;
+}
+div.gm-style-iw-d>div>h3
+{
+    color: black;
+}
+/* Contact us form */
+#reach_us
+{
+    color:azure;
+    line-height: 1.6;
+    padding: 1em;
+}
+.container-contact
+{
+    max-width: 1170px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+}
+.company-info>ul
+{
+    list-style: none;
+    padding: 0;
 
 }
+.brand
+{
+    text-align: center;
+}
+.brand span
+{
+    color:white;
+}
+.wrapper
+{
+    box-shadow: 0 0 20px 0 rgba(195, 195, 197, 0.8);
+}
+.wrapper > *{
+    padding: 1em;
+}
+.company-info
+{
+    background-color: rgb(78, 81, 88);
+}
+.company-info h3, .company-info ul
+{
+    text-align: center;
+    margin: 0 0 1rem 0;
+}
+address
+{
+    text-align: center;
+    margin: 0 0 1rem 0;
+    font-size: larger;
+}
+.add
+{
+    margin-left: 24%;
+}
+.contact
+{
+    color: rgb(72, 94, 116);
+    background-color: #f9feff;
+}
+/* Form Styling */
+.contact form
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    color: rgb(72, 94, 116);
+}
+.contact form label
+{
+    display: block;
+    color: rgb(72, 94, 116);
+}
+.contact form p{
+    margin: 0;
+    color: rgb(72, 94, 116);
+}
+.contact form .full
+{
+    grid-column: 1/3;
+    color: rgb(72, 94, 116);
+}
+.contact form button, .contact form input, .contact form textarea
+{
+    width: 100%;
+    padding: 1em;
+    border: 1px solid rgb(78, 81, 88);
+}
+.contact form button
+{
+    background-color:rgb(78, 81, 88);
+    color: white;
+    border: 0;
+    text-transform: uppercase;
+}
+.contact form button:hover,.contact form button:focus
+{
+    background-color: rgb(47, 49, 54);
+    outline: 0;
+    transition: background-color 2s ease-out;
+}
+input,textarea
+{
+    color: black;
+}
+#map
+{
+    height: 400px;
+    width: 500px;
+}
+/* Large Screen */
+@media(max-width:768px)
+{
+    #map{
+        width: 90%;
+        height: 300px;
+        margin: auto;
+    }
+}
+@media(min-width:768px)
+{
+   .wrapper
+   {
+       display: grid;
+       grid-template-columns: 1fr 2fr;
+   }
+   .wrapper>*{
+       padding: 2em;
+   }
+   .company-info h3, .company-info ul, .brand
+   {
+       text-align: left;
+       font-size: larger;
+       letter-spacing: 1.2;
+   }
+   .company-info i
+   {
+       margin-right: 5px;
+   }
+}
+/* ========================================================================================== */
 /* Keyframes */
 @keyframes visible
 {
@@ -237,8 +878,720 @@ td
     50%{opacity: 0.5;}
     100% {opacity: 1;}
 }
-@keyframes rotate
+@keyframes transitionIn
 {
-    0%{transform: rotateY(0deg);}
-    100%{transform: rotateY(360deg);}
+    from
+    {
+        opacity: 0;
+        transform: rotateX(-10deg);
+    }
+    to
+    {
+        opacity: 1;
+        transform: rotateX(0deg);
+    }
+}
+/* Sidemenu animation */
+@keyframes navLinksFade 
+{
+    from{
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+@keyframes fill
+{
+    from
+    {
+        clip-path: circle(36.5% at 100% 0);
+        -webkit-clip-path: circle(36.5% at 100% 0);
+    }
+    to
+    {
+        clip-path: circle(147.0% at 100% 0);
+        -webkit-clip-path: circle(147.0% at 100% 0);
+    }
+}
+
+
+/* Media Queries */
+@media screen and (max-width:568px) and (min-width: 320px)
+{
+    body
+    {
+        overflow-x: hidden;
+    }
+    .nav-links li
+    {
+        display: none;
+    }
+    a.side-link-collapse
+    {
+        display: block;
+    }
+    .side-nav a
+    {
+        text-align: end;
+        margin-right: 50px;
+    }
+    .rocket-feature-heading
+    {
+        font-size: large;
+    }
+    .rocket-feature-tagline
+    {
+        font-size: small;
+    }
+    #rocket-svg
+    {
+        margin-top: 3%;
+    }
+    #table
+    {
+        margin-top: 2%;
+        margin-bottom: 110%;
+    }
+    #scene
+    {
+        height: 90%;
+        width: 80%;
+        margin: auto;
+        border: 0.5px solid white;
+    }
+    .table-name
+    {
+        font-size: 14px;
+    }
+    .table-sub
+    {
+        font-size: 22px;
+    }
+    .rocket-animation-container
+    {
+        margin-top: 0%;
+    }
+    .rocket-header
+    {
+        font-size: 20px;
+    }
+    #first
+    {
+        font-size: 15px;
+    }
+    #carousal-rocket
+    {
+        margin-bottom: 38%;
+    }
+    footer
+    {
+        font-size: 0.5em;
+    }
+    .footer-content
+    {
+        padding: 1.2em;
+    }
+    p.carousel__text
+    {
+        font-size: 12px;
+    }
+    /* Home Page */
+    div.homef,div.home1,div.home2
+    {
+        height: fit-content;
+    }
+
+    div.home1
+    {
+        margin: 0;
+    }
+    div.homef>div.row>div.col-md-4 h1
+    {
+        margin-top: 25%;
+        font-size: 18px;
+    }
+    div.homef>div.row>div.col-md-4 a
+    {
+        font-size: xx-small;
+    }
+    div.home1>div.row>div.col-md-8 h1
+    {
+        font-size: 18px;
+    }
+    div.home1>div.row>div.col-md-8 a
+    {
+        font-size: xx-small;
+        margin-bottom: 7%;
+    }
+    div.home2>div.row>div.col-md-8 h1 
+    {
+        font-size: 15px;
+    }
+    div.home2>div.row>div.col-md-8 a
+    {
+        font-size: x-small;
+        /* margin-left: 0; */
+    }
+    i.fa-chevron-down
+    {
+        margin-top: 0%;
+        font-size: 10px;
+    }
+    /* Updates Page */
+    #updates-title
+    {
+        font-size: 12px;
+    }
+    #updates-button
+    {
+        font-size: xx-small;
+    }
+     /* Mission page */
+     #quote
+     {
+         background-size: cover;
+     }
+     .blockquote>.h3
+     {
+ 
+         font-size: 14px;
+         line-height: 1.6;
+         padding: 20%;
+     }
+     #controls
+     {
+         right: 30%;
+         top: 35%;
+     }
+     #controls .set-zoom>input::before
+     {
+         width: 60px;
+     }
+     .exploration-text
+     {
+         margin-top: 55%;
+     }
+     .exploration-text>div.display-4
+     {
+         font-size: 25px;
+     }
+     .exploration-text>p.lead
+     {
+         font-size: 14px;
+     }
+     #mars-mission>div.display-1
+     {
+         font-size: 45px;
+
+     }
+     #mars-mission>a
+     {
+         font-size: medium;
+     }
+     .carousel__header
+     {
+         font-size: 15px;
+     }
+     p.date
+     {
+         font-size: 10px;
+     }
+     .carousel__text--left
+     {
+         font-size: 12px;
+         width: 50%;
+     }
+     #facilities
+     {
+         margin-bottom: 40%;
+     }
+     /* Mars */
+     #marsFeauture>div.title
+     {
+         font-size: 30px;
+         top: 50%;
+     }
+     #marsFeauture>div.info_bar>a
+     {
+         font-size: 15px;
+     }
+    .mars-mission-statement>div.display-4
+    {
+        margin-top: 5%;
+        font-size: 25px;
+    }
+    .mars-mission-statement>p.lead
+    {
+        font-size: 14px;
+    }
+    .maven>div.display-4
+    {
+        font-size: 25px;
+    }
+    .maven>p.lead
+    {
+        font-size: 14px;
+    }
+    div.maven_text
+    {
+        font-size: 10px;
+        right: unset;
+        width: 200px;
+    }
+    #mission-statement
+    {
+        margin-bottom: 120%;
+    }
+    #Carousal
+    {
+        margin-bottom: 38%;
+    }
+    /* Contact form */
+    .image-text-heading
+    {
+        font-size: 40px;
+    }
+    .image-text-sub
+    {
+        font-size: 25px;
+    }
+    #reach_us
+    {
+        margin-bottom: 200%;
+    }
+}
+@media screen and (max-width:768px) and (min-width:568px)
+{
+    body
+    {
+        overflow-x: hidden;
+    }
+    .nav-links li
+    {
+        display: none;
+    }
+    a.side-link-collapse
+    {
+        display: block;
+    }
+    .side-nav a
+    {
+        z-index: 5;
+        text-align: center;
+        margin-right: 50px;
+    }
+    .rocket-feature-heading
+    {
+        font-size: x-large;
+    }
+    .rocket-feature-tagline
+    {
+        font-size: medium;
+    }
+    #rocket-svg
+    {
+        margin-top: 9%;
+    }
+    #table-container
+    {
+        margin: 0;
+    }
+    #table
+    {
+        margin-top: 2%;
+        margin-bottom: 85%;
+    }
+    #scene
+    {
+        height: 100%;
+        width: 80%;
+        margin: auto;
+        border: 0.5px solid white;
+    }
+    .table-sub
+    {
+        font-size: x-large;
+    }
+    .rocket-animation-container
+    {
+        margin-top: 0%;
+    }
+    .rocket-header
+    {
+        font-size: 20px;
+    }
+    #first
+    {
+        font-size: 15px;
+    }
+    #carousal-rocket
+    {
+        margin-bottom: 27%;
+    }
+    footer
+    {
+        font-size: 0.7em;
+    }
+    .footer-content
+    {
+        padding: 1.3em;
+    }
+    p.carousel__text
+    {
+        font-size: 12px;
+    }
+    /* Home Page */
+    div.homef>div.row>div.col-md-4 h1
+    {
+        margin-top: 25%;
+        font-size: 22px;
+    }
+    div.homef>div.row>div.col-md-4 a
+    {
+        font-size: small;
+    }
+    div.home1>div.row>div.col-md-8 h1
+    {
+        font-size: 22px;
+    }
+    div.home1>div.row>div.col-md-8 a
+    {
+        font-size: small;
+        margin-bottom: 2%;
+    }
+    div.home2>div.row>div.col-md-8 h1 
+    {
+        font-size: 22px;
+    }
+    div.home2>div.row>div.col-md-8 a
+    {
+        font-size: small;
+    }
+    i.fa-chevron-down
+    {
+        margin-top: 4%;
+        font-size: 30px;
+    }
+     /* Mission page */
+     #quote
+     {
+         background-size: cover;
+     }
+     .blockquote>.h3
+     {
+ 
+         font-size: 20px;
+         line-height: 1.6;
+         padding: 10%;
+     }
+     #controls
+     {
+         right: 30%;
+         top: 25%;
+     }
+     .exploration-text
+     {
+         margin-top: 55%;
+     }
+     .exploration-text>div.display-4
+     {
+         font-size: 25px;
+     }
+     .exploration-text>p.lead
+     {
+         font-size: 14px;
+     }
+     #mars-mission>div.display-1
+     {
+         font-size: 45px;
+
+     }
+     #mars-mission>a
+     {
+         font-size: medium;
+     }
+     /* Mars */
+    .mars-mission-statement>div.display-4
+    {
+        margin-top: 5%;
+        font-size: 25px;
+    }
+    .mars-mission-statement>p.lead
+    {
+        font-size: 14px;
+    }
+    .maven>div.display-4
+    {
+        font-size: 25px;
+    }
+    .maven>p.lead
+    {
+        font-size: 14px;
+    }
+    div.maven_text
+    {
+        font-size: 16px;
+    }
+    #mission-statement
+    {
+        margin-bottom: 50%;
+    }
+    #Carousal
+    {
+        margin-bottom: 27%;
+    }
+    /* Contact form */
+    .image-text-heading
+    {
+        font-size: 40px;
+    }
+    .image-text-sub
+    {
+        font-size: 25px;
+    }
+    #reach_us
+    {
+        margin-bottom: 100%;
+    }
+}
+
+@media screen and (max-width:1100px) and (min-width:768px)
+{
+    body
+    {
+        overflow-x: hidden;
+    }
+    .nav-links
+    {
+        width: 60%;
+    }
+    .rocket-feature-heading
+    {
+        font-size: xx-large;
+    }
+    .rocket-feature-tagline
+    {
+        font-size: large;
+    }
+    #rocket-svg
+    {
+        margin-top: 9%;
+    }
+    #table
+    {
+        margin-top: 2%;
+    }
+    .table-sub
+    {
+        padding: 0;
+    }
+    .rocket-animation-container
+    {
+        margin-top: 0%;
+    }
+    .rocket-header
+    {
+        font-size: 20px;
+    }
+    #first
+    {
+        font-size: 15px;
+    }
+    #carousal-rocket
+    {
+        margin-bottom: 22%;
+    }
+    footer
+    {
+        font-size: 0.8em;
+    }
+    .footer-content
+    {
+        padding: 1.5em;
+    }
+    p.carousel__text
+    {
+        font-size: medium;
+    }
+    /* Home Page */
+    div.homef>div.row>div.col-md-4 h1
+    {
+        margin-top: 40%;
+        font-size: 30px;
+    }
+    div.homef>div.row>div.col-md-4 a
+    {
+        font-size: medium;
+    }
+    div.home1>div.row>div.col-md-8 h1
+    {
+        font-size: 30px;
+    }
+    div.home1>div.row>div.col-md-8 a
+    {
+        font-size: medium;
+        margin-bottom: 2%;
+    }
+    div.home2>div.row>div.col-md-8 h1 
+    {
+        font-size: 30px;
+    }
+    div.home2>div.row>div.col-md-8 a
+    {
+        font-size: medium;
+    }
+    /* Mission page */
+    .blockquote>.h3
+    {
+
+        font-size: 20px;
+        line-height: 1.6;
+        padding: 10%;
+    }
+    #controls
+    {
+        right: 30%;
+        top: 25%;
+    }
+    .exploration-text
+    {
+        margin-top: 55%;
+    }
+    .exploration-text>div.display-4
+    {
+        font-size: 25px;
+    }
+    .exploration-text>p.lead
+    {
+        font-size: 14px;
+    }
+    /* Mars */
+    .mars-mission-statement>div.display-4
+    {
+        font-size: 25px;
+    }
+    .mars-mission-statement>p.lead
+    {
+        font-size: 14px;
+    }
+    .maven>div.display-4
+    {
+        font-size: 25px;
+    }
+    .maven>p.lead
+    {
+        font-size: 14px;
+    }
+    div.maven_text
+    {
+        font-size: 16px;
+    }
+    #Carousal
+    {
+        margin-bottom: 22%;
+    }
+    /* Contact form */
+    .image-text-heading
+    {
+        font-size: 40px;
+    }
+    .image-text-sub
+    {
+        font-size: 25px;
+    }
+    #reach_us
+    {
+        margin-bottom: 35%;
+    }
+
+}
+@media screen and (max-width:1300px) and (min-width:1100px)
+{
+    /* Rocket Page */
+    #animation>video
+    {
+        width: 10%;
+        height: 400px;
+    }
+    #animation>div.row>div.col-lg-8
+    {
+        margin: 0;
+    }
+    .rocket-header
+    {
+        font-size: 18px;
+    }
+    #first
+    {
+        font-size: 14px;
+    }
+    #rocket-svg
+    {
+        margin-top: 12%;
+    }
+    #table
+    {
+        margin-top: 0%;
+    }
+    .rocket-animation-container
+    {
+        margin-top: 10%;
+
+    }
+    #carousal-rocket
+    {
+        margin-bottom: 18%;
+    }
+    p.carousel__text
+    {
+        font-size: medium;
+    }
+    footer
+    {
+        font-size: 0.9em;
+    }
+    .footer-content
+    {
+        padding: 1.7em;
+    }
+/* Home Page */
+    div.homef>div.row>div.col-md-4 h1
+    {
+        margin-top: 50%;
+        font-size: 40px;
+    }
+    div.homef>div.row>div.col-md-4 a
+    {
+        font-size: large;
+    }
+    div.home1>div.row>div.col-md-8 h1
+    {
+        font-size: 40px;
+    }
+    div.home1>div.row>div.col-md-8 a
+    {
+        font-size: large;
+        margin-bottom: 2%;
+    }
+    div.home2>div.row>div.col-md-8 h1 
+    {
+        font-size: 40px;
+    }
+    div.home2>div.row>div.col-md-8 a
+    {
+        font-size: large;
+    }
+    /* Mars */
+    #Carousal
+    {
+        margin-bottom: 18%;
+    }
+    /* Contact */
+    #reach_us
+    {
+        margin-bottom: 20%;
+    }
 }

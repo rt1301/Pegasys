@@ -1,41 +1,47 @@
 <%-include("partials/header.ejs")%>
 <%if(article){%>
-   <div class="container" style="margin-top: 5%;margin-bottom: 0;width: fit-content;">
+<section id="luxy" data-simplebar>
+<div class="animsition"
+data-animsition-in-class="zoom-in-sm"
+data-animsition-in-duration="1000"
+data-animsition-out-class="zoom-out-sm"
+data-animsition-out-duration="800">
+<div class="container" style="margin-top: 5%;margin-bottom: 0;width: fit-content;">
     <a id="update-link" href="/updates">Back to Updates</a>
-   </div>
-    <img id="image" src="<%=article.Image%>" style="height: 80%;">
-        <div class="container d-flex flex-column" id="article" style="margin-bottom: 10%;">
-            <div class="row">
-            <div class="col-md-9">
-                <div class="container">
-                    <h1 class="display-3 text-left" id="title">
-                     <%=article.Title%>
-                    </h1> 
-                    <br>
-                    <div  id="content">
-                        <%-article.Content%>
-                    </div>
-                    <br>
-                </div>
+</div>
+<div class="container-fluid" style="height: fit-content;"><img id="image" src="<%=article.Image%>" style="height: 65%;"></div>
+</div>
+<div class="container d-flex flex-column" id="article" style="margin-bottom: 20%;">
+    <div class="row">
+    <div class="col-md-9">
+        <div class="container">
+            <h1 class="display-3 text-left container-bg" id="title">
+                <%=article.Title%>
+            </h1> 
+            <br>
+            <div class="container-bg"  id="content">
+                <%-article.Content%>
             </div>
-            </div>
+            <br>
         </div>
-    
-<script>
-       var tl= new TimelineMax();
-       var tl1= new TimelineMax();
-       const controller = new ScrollMagic.Controller();
-       tl.from("#title",0.5,{scale:0,opacity:0});
-       tl1.from("#content",1,{scale:0,opacity:0});
-       const scene1 = new ScrollMagic.Scene({
-           triggerElement:"#image",
-           triggerHook: "onLeave"
-       }).setTween(tl).addTo(controller);     
-       const scene2 = new ScrollMagic.Scene({
-           triggerElement:"#title",
-           triggerHook: "onEnter"
-       }).setTween(tl1).addTo(controller);     
-</script>
+    </div>
+    </div>
+</div>
+</section>
 <%}%>
-
+<script>
+    var tl= new TimelineMax();
+        var tl1= new TimelineMax();
+        const controller = new ScrollMagic.Controller();
+        tl.from("#title",0.5,{scale:0,opacity:0});
+        tl1.from("#content",1,{scale:0,opacity:0});
+        const scene1 = new ScrollMagic.Scene({
+            triggerElement:"#image",
+            triggerHook: "onLeave"
+        }).setTween(tl).addTo(controller);     
+        const scene2 = new ScrollMagic.Scene({
+            triggerElement:"#title",
+            triggerHook: "onEnter"
+        }).setTween(tl1).addTo(controller);    
+ </script>
 <%-include("partials/footer.ejs")%>

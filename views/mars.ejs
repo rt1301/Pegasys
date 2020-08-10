@@ -1,0 +1,167 @@
+<%-include("partials/header.ejs")%>
+<section id="luxy">
+<div class="animsition"
+data-animsition-in-class="zoom-in-sm"
+data-animsition-in-duration="1000"
+data-animsition-out-class="zoom-out-sm"
+data-animsition-out-duration="800">
+<div id="marsFeauture" class="container-fluid">
+    <img src="https://www.hdwallpaperslife.com/wp-content/uploads/2018/07/mars_mission.jpg" style="margin: 0;" alt="">
+    <div class="display-3 title">Mars Mission</div>
+    <div class="info_bar"><a style="color: black;" href="#mission-statement">Learn More</a></div>
+</div>
+</div>
+<div class="container-fluid" id="mission-statement" style="height: 100vh;margin-top: 5%;">
+    <div class="row" style="height: 100%;">
+        <div class="col-md-4" style="margin:auto;text-align: center;">
+            <div class="container mars-mission-statement container-bg">
+                <div class="display-4">Mission Statement</div>
+                <br>
+                <p class="lead">The goal of the Mars Exploration Program is to explore Mars and to provide a continuous flow of scientific information and discovery through a carefully selected series of robotic orbiters, landers and mobile laboratories interconnected by a high-bandwidth Mars/Earth communications network</p>
+                <p class="lead">There are several strategic, practical and scientific reasons for humans to explore Mars. Among them we know that Mars is the most accessible place in the solar system. Additionally, exploring Mars provides the opportunity to possibly answer origin and evolution of life questions, and could someday be a destination for survival of humankind.</p>
+            </div>
+        </div>
+        <div class="col-md-8" id="scene"></div>
+    </div>
+</div>
+<div class="container-fluid" id="maven" style="height: 100vh;margin-top: 5%;">
+    <div class="row" style="height: 100%;">
+        <div class="col-md-8" style="margin: auto;">
+            <video  autoplay loop muted width="100%" height="100%" preload="auto" autobuffer="true" style="width: 100%;">
+                <source src="/Animations/Maven.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="col-md-4">
+            <div class="container maven container-bg" style="margin: auto;text-align: center;">
+                <div class="display-4">MAVEN</div>
+                <br>
+                <p class="lead" style="line-height: 1.5;">Pegasys's MAVEN is currently orbiting Mars studying the structure and composition of the upper atmosphere of the Red Planet.The goal is to use this data to determine how the loss of volatiles from the Martian atmosphere has affected the Martian climate over time, and thus contribute to a better understanding of terrestrial climatology.</p>
+                <p class="lead" style="line-height: 1.5;">Pegasys plans to use MAVEN's relay capability as long as possible. The spacecraft has an ultra high frequency (UHF) radio transceiver—similar to transceivers carried on other Mars orbiters—that allows it to relay data between Earth and rovers or landers on the surface of Mars.</p>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" id="Carousal" style="height: 100vh;margin-top: 5%;">
+    <div class="Carousel">
+        <button class="carousel__button left is-hidden"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+        <div class="carousel__track-container">
+            <ul class="carousel__track">
+                <li class="carousel__slide current-slide">
+                    <img class="img-fluid carousel__image"  src="https://mars.nasa.gov/system/resources/detail_files/24756_mavenatmars-web.jpg" alt="">
+                    <div class="maven_text">
+                        MAVEN maps winds and gives clues to martian climate
+                    </div>
+                </li>
+                <li class="carousel__slide">
+                    <img class="img-fluid carousel__image" src="https://mars.nasa.gov/system/resources/detail_files/25002_mavenmarselectriccurrents.png" alt="">
+                    <div class="maven_text">
+                        MAVEN maps electric current affecting mars atmosphere
+                    </div>
+                </li>
+                <li class="carousel__slide">
+                    <img class="img-fluid carousel__image" src="https://mars.nasa.gov/system/resources/detail_files/24755_mars_winds_preview_4-web.jpg" alt="">
+                    <div class="maven_text">MAVEN explores Mars to understand radio interference at earth</div>
+                </li>
+            </ul>
+        </div>
+        <button class="carousel__button right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+    </div>
+        <div class="carousel__nav">
+            <button class="carousel__indicator current-slide"></button>
+            <button class="carousel__indicator"></button>
+            <button class="carousel__indicator"></button>
+        </div>
+</div>
+</section>
+<script src="/js/three.min.js"></script>
+<script src="/js/GLTFLoader.js"></script>
+<script src="/js/OrbitControls.js"></script>
+<script>
+var tl = new TimelineMax();
+var tl1 = new TimelineMax();
+var tl2 = new TimelineMax();
+const controller = new ScrollMagic.Controller();
+tl.from("#mission-statement",1,{yPercent:15, ease:Back.easeInOut});
+tl1.from("#maven",1,{yPercent:40, ease:Back.easeInOut});
+tl2.from("#Carousal",1,{yPercent:40,ease:Back.easeInOut});
+const ScrollScene1 = new ScrollMagic.Scene({
+    triggerElement:"#mission-statement",
+    triggerHook: "onEnter"
+}).setTween(tl).addTo(controller);
+const ScrollScene2 = new ScrollMagic.Scene({
+    triggerElement:"#maven",
+    triggerHook: "onEnter"
+}).setTween(tl1).addTo(controller);
+const ScrollScene3 = new ScrollMagic.Scene({
+    triggerElement:"#Carousal",
+    triggerHook: "onEnter"
+}).setTween(tl2).addTo(controller);
+// Threejs code
+//Variables for setup
+let container;
+let camera;
+let renderer;
+let scene;
+var mars;
+var controls;
+    
+    function init() 
+{
+      container = document.querySelector("#scene");
+    
+      //Create scene
+      scene = new THREE.Scene();
+    
+      const fov = 25;
+      const aspect = container.clientWidth / container.clientHeight;
+      const near = 0.1;
+      const far = 1000;
+      
+      //Camera setup
+      camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+      camera.position.set(-1, -1, 10);
+      const ambient = new THREE.AmbientLight(0x404040, 2);
+      scene.add(ambient);
+    
+      const light = new THREE.DirectionalLight(0xffffff, 2);
+      light.position.set(50, 50, 100);
+      scene.add(light);
+      //Renderer
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.setPixelRatio(window.devicePixelRatio);
+    
+      container.appendChild(renderer.domElement);
+    // Controls
+      controls = new THREE.OrbitControls(camera,renderer.domElement);
+      //Load Model
+      let loader = new THREE.GLTFLoader();
+      loader.load("/models/mars.gltf", function(gltf) 
+      {
+        scene.add(gltf.scene);
+        mars = gltf.scene.children[0];
+        animate();
+      });
+    }
+    
+    function animate() {
+      requestAnimationFrame(animate);
+      mars.rotation.y += 0.01;
+      mars.castShadow = true;
+      renderer.render(scene, camera);
+    }
+    
+    init();
+    
+    function onWindowResize() {
+      camera.aspect = container.clientWidth / container.clientHeight;
+      camera.updateProjectionMatrix();
+    
+      renderer.setSize(container.clientWidth, container.clientHeight);
+    }
+    
+    window.addEventListener("resize", onWindowResize);
+    
+</script>
+<%-include("partials/footer.ejs")%>

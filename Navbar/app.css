@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body
+{
+    background-color: black;
+    
+}
+.logo
+{
+    z-index: 10;
+}
+nav
+{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 10vh;
+    background-color: black;
+    font-family: 'Poppins', sans-serif;
+}
+.nav-links
+{
+    display: flex;
+    justify-content: space-around;
+    width: 45%;
+    list-style: none;
+}
+.navlink
+{
+    color: rgb(262, 262, 262);
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+.burger
+{
+    cursor: pointer;
+    z-index: 2;
+}
+.burger div
+{
+    width: 29px;
+    height: 3px;
+    background-color: rgb(262, 262, 262);
+    margin:5px;
+    border-radius: 7px;
+    transition: all 0.3s ease;
+}
+
+/* Side Menu */
+.side-nav
+{
+    height: 100%;
+    width: 0px;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    z-index: 1;
+    top: 0;
+    right: 0%;
+    background-color: #111;
+    opacity: 0.7;
+    overflow-x: hidden;
+    padding-top: 60px;
+}
+.side-nav
+{
+    clip-path: circle(100px at 100% 0%);
+    -webkit-clip-path:  circle(100px at 100% 0%);
+    transition: all 1s ease;
+}
+.side-nav.open
+{
+    clip-path: circle(900px at 100% 0%);
+    -webkit-clip-path:  circle(900px at 100% 0%);
+    pointer-events: all;
+}
+.side-nav a
+{
+
+    padding: 10px 10px 10px 30px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 20px;
+    color: #ccc;
+    display: block;
+    opacity: 0;
+    z-index: 5;
+    font-family: 'Poppins', sans-serif;
+}
+.side-nav a:hover
+{
+    color: #fff;
+}
+a.side-link-collapse
+{
+    display: none;
+}
+.toggle .line1
+{
+    transform: rotate(-45deg) translate(-5px,6px);
+}
+.toggle .line2
+{
+    opacity: 0;
+}
+.toggle .line3
+{
+    transform: rotate(45deg) translate(-5px,-6px);
+}
+.blur
+{
+    filter: blur(8px);
+  -webkit-filter: blur(8px);
+}
+@keyframes navLinksFade 
+{
+    from{
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+@keyframes fill
+{
+    from
+    {
+        clip-path: circle(36.5% at 100% 0);
+        -webkit-clip-path: circle(36.5% at 100% 0);
+    }
+    to
+    {
+        clip-path: circle(147.0% at 100% 0);
+        -webkit-clip-path: circle(147.0% at 100% 0);
+    }
+}
+/* Media Queries */
+@media screen and (max-width:768px) and (min-width:568px)
+{
+    body
+    {
+        overflow-x: hidden;
+    }
+    .nav-links li
+    {
+        display: none;
+    }
+    a.side-link-collapse
+    {
+        display: block;
+    }
+    .side-nav a
+    {
+        z-index: 5;
+        text-align: end;
+        margin-right: 50px;
+    }
+}
+@media screen and (max-width:568px)
+{
+    body
+    {
+        overflow-x: hidden;
+    }
+    .nav-links li
+    {
+        display: none;
+    }
+    a.side-link-collapse
+    {
+        display: block;
+    }
+    .side-nav a
+    {
+        text-align: end;
+        margin-right: 50px;
+    }
+}
+@media screen and (max-width:1000px) and (min-width:768px)
+{
+    body
+    {
+        overflow-x: hidden;
+    }
+    .nav-links
+    {
+        width: 60%;
+    }
+}

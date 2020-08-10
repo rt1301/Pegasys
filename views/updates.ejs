@@ -1,5 +1,11 @@
 <%-include("partials/header.ejs")%>
-<div class="container-fluid homef">
+<section id="luxy" data-simplebar>
+<div class="animsition"
+data-animsition-in-class="zoom-in-sm"
+data-animsition-in-duration="1000"
+data-animsition-out-class="zoom-out-sm"
+data-animsition-out-duration="800">
+<div class="container-fluid homef" style="background-image: url(<%=articles[0].Image%>);">
 <div class="row">
   <div class="col-md-4" id="homef">
     <div class="container"><h1 class="display-3 text-left"><%=articles[0].Title%></h1></div>
@@ -9,19 +15,21 @@
 <i class="fas fa-chevron-down"></i>
 </div>
 </div>
-<div class="ui fluid container">
+<div class="ui fluid container" style="margin-bottom: 15%;">
 <div class="ui two column grid">
-  <div class="row">
-    <%for(var i=1 ; i<articles.length ; i++) { %>
-      <div class="column">
-        <img src="<%=articles[i].Image%>" id="image">
-        <p class="display-4 text-left" style="font-size: 1.5rem;" id="title"><%=articles[i].Title%></p>
-        <a class="ui inverted button" href="/updates/<%=articles[i].Title%>" id="button">View Article</a>
-      </div>
-    <%}%>
-  </div>
+<div class="row" style="margin-left: 2%;margin-right: 2%;">
+  <%for(var i=1 ; i<articles.length ; i++) { %>
+    <div class="column">
+      <img class="img-fluid" src="<%=articles[i].Image%>" id="image">
+      <p class="display-4 text-left" id="updates-title"><%=articles[i].Title%></p>
+      <a class="ui inverted button" href="/updates/<%=articles[i].Title%>" id="updates-button">View Article</a>
+    </div>
+  <%}%>
 </div>
 </div>
+</div>
+</div> 
+</section>
 
 <script>
 var tl = new TimelineMax();
@@ -39,7 +47,7 @@ const scene2 = new ScrollMagic.Scene({
 const scene3 = new ScrollMagic.Scene({
   triggerElement:"#button",
   triggerHook:"onEnter"
-}).setTween(tl3).addTo(controller);
+}).setTween(tl2).addTo(controller);
 const scene1 = new ScrollMagic.Scene({
   triggerElement: "#image",
   triggerHook: "onEnter"
