@@ -1,10 +1,9 @@
 <%-include("partials/header.ejs")%>
-<section id="luxy" data-simplebar>
 <div class="animsition"
 data-animsition-in-class="zoom-in-sm"
 data-animsition-in-duration="1000"
 data-animsition-out-class="zoom-out-sm"
-data-animsition-out-duration="800">
+data-animsition-out-duration="900">
 <div class="container-fluid homef" style="background-image: url(<%=article[0].Image%>);margin-top: 10%;">
     <div class="row">
         <div class="col-md-4" id="homef">
@@ -40,34 +39,20 @@ data-animsition-out-duration="800">
         </div>
     </div>
 </div>
-</section>
 <script>
-    var lastScroll = 0;
-    $(document).scroll(function(){
-    var st = $(this).scrollTop();
-    var prop = {
-        "opacity" : "1",
-        "transition": "opacity",
-        "transition-duration":"0.7s",
-        "transition-timing-function":"linear",
-    };
-    if($("#home1"))
-    {
-        if((st >= $("#home1").position().top - 300))
-    {
-        $("#home1").css(prop);
-       
-    }
-    }
-    if($("#home2"))
-    {
-        if((st >= $("#home2").position().top - 300))
-    {
-        $("#home2").css(prop);
-    }
-    }
-    lastScroll = st;
-    })
+    var tl = new TimelineMax();
+    var tl1 = new TimelineMax();
+    const controller =  new ScrollMagic.Controller();
+    tl.from("#home1",2,{opacity:0});
+    tl1.from("#home2",2,{opacity:0});
+    const ScrollScene1 = new ScrollMagic.Scene({
+        triggerElement:"#home1",
+        triggerHook:"onEnter"
+    }).setTween(tl).addTo(controller);
+    const ScrollScene2 = new ScrollMagic.Scene({
+        triggerElement:"#home2",
+        triggerHook:"onEnter"
+    }).setTween(tl1).addTo(controller);
 </script>
 <%-include("partials/footer.ejs")%>
 

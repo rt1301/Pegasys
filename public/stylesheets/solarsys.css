@@ -938,10 +938,6 @@ dl.infos dd span::after
     font-size: 35%; 
   }
 }
-@media screen and (min-width: 1600px) {
-  .zoom-close #solar-system {
-    margin-left: -120%; } }
-
    
     
     

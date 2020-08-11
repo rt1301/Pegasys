@@ -1,10 +1,10 @@
 <%-include("partials/header.ejs")%>
-<section id="luxy" data-simplebar>
+<link rel="stylesheet" href="/stylesheets/solarsys.min.css">
 <div class="animsition"
 data-animsition-in-class="zoom-in-sm"
-data-animsition-in-duration="1000"
+data-animsition-in-duration="1200"
 data-animsition-out-class="zoom-out-sm"
-data-animsition-out-duration="800">
+data-animsition-out-duration="900">
 <div id="quote" class="container-fluid">
 <div class="container" style="padding-top:10%;text-align: center;">
     <blockquote class="blockquote">
@@ -148,25 +148,25 @@ data-animsition-out-duration="800">
         <div class="carousel__track-container">
             <ul class="carousel__track">
                 <li class="carousel__slide current-slide">
-                    <img class="carousel__image"  src="https://www.spacex.com/static/images/mission/mission-slider-08.webp" alt="">
+                    <img class="carousel__image lazy" src="/images/deep_space.jpg"  data-src="https://www.spacex.com/static/images/mission/mission-slider-08.webp" data-srcset="https://www.spacex.com/static/images/mission/mission-slider-08.webp" alt="">
                     <p class="date">July 2010</p>
                     <h1 class="carousel__header">Falcon makes History</h1>
                     <p class="carousel__text--left">Falcon 1 becomes the first privately developed liquid fuel rocket to reach Earth orbit.</p>
                 </li>
                 <li class="carousel__slide">
-                    <img class="carousel__image" src="https://www.spacex.com/static/images/mission/mission-slider-06.webp" alt="">
+                    <img class="carousel__image lazy" src="/images/deep_space.jpg" data-src="https://www.spacex.com/static/images/mission/mission-slider-06.webp" data-srcset="https://www.spacex.com/static/images/mission/mission-slider-06.webp" alt="">
                     <p class="date">October 2015</p>
                     <h1 class="carousel__header">First Land Landing</h1>
                     <p class="carousel__text--left">On October 21, 2015, the Falcon 9 rocket delivered 11 communications satellites to orbit, and the first stage returned and landed at Landing Zone 1 — the first-ever orbital class rocket landing.</p>
                 </li>
                 <li class="carousel__slide">
-                    <img class="carousel__image" src="https://www.spacex.com/static/images/mission/mission-slider-04.webp" alt="">
+                    <img class="carousel__image lazy" src="/images/deep_space.jpg" data-src="https://www.spacex.com/static/images/mission/mission-slider-04.webp" data-srcset="https://www.spacex.com/static/images/mission/mission-slider-04.webp" alt="">
                     <p class="date">March 2017</p>
                      <h1 class="carousel__header">First Reflight</h1>
                     <p class="carousel__text--left">On March 30, 2017, SpaceX achieved the world’s first reflight of an orbital class rocket. Following delivery of the payload, the Falcon 9 first stage returned to Earth for the second time.</p>
                 </li>
                 <li class="carousel__slide">
-                    <img src="https://www.spacex.com/static/images/mission/mission-slider-03.webp" alt="" class="carousel__image">
+                    <img data-src="https://www.spacex.com/static/images/mission/mission-slider-03.webp" data-srcset="https://www.spacex.com/static/images/mission/mission-slider-03.webp" src="/images/deep_space.jpg" alt="" class="carousel__image lazy">
                     <p class="date">April 2019</p>
                      <h1 class="carousel__header">Falcon Heavy First Flight</h1>
                     <p class="carousel__text--left">
@@ -189,7 +189,7 @@ data-animsition-out-duration="800">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <img class="img-fluid" src="https://www.spacex.com/static/images/locations/testing.webp" alt="">
+                <img class="img-fluid lazy" src="/images/deep_space.jpg" data-src="/images/Facilities/1.jpg" data-srcset="/images/Facilities/1.jpg" alt="">
                 <div class="container-bg">
                 <p class="location">Texas</p>
                 <h2 class="loc-name">Testing Facility</h3>
@@ -197,7 +197,7 @@ data-animsition-out-duration="800">
                 </div>
             </div>
             <div class="col-md-6">
-                <img src="https://www.spacex.com/static/images/locations/build.webp" alt="" class="img-fluid">
+                <img src="/images/deep_space.jpg" data-src="/images/Facilities/2.jpg" data-srcset="/images/Facilities/2.jpg"  alt="" class="img-fluid lazy">
                 <div class="container-bg">
                     <p class="location">California</p>
                     <h2 class="loc-name">Build Facility</h2>
@@ -207,7 +207,7 @@ data-animsition-out-duration="800">
         </div>
         <div class="row">
             <div class="col-md-6">
-                <img src="https://www.spacex.com/static/images/locations/vandenberg.webp" alt="" class="img-fluid">
+                <img src="/images/deep_space.jpg" data-src="/images/Facilities/3.jpg" data-srcset="/images/Facilities/3.jpg" alt="" class="img-fluid lazy">
                 <div class="container-bg">
                     <p class="location">Florida</p>
                     <h2 class="loc-name">Vanderberg air force base, space launch complex 4</p>
@@ -215,7 +215,7 @@ data-animsition-out-duration="800">
                 </div>
             </div>
             <div class="col-md-6">
-                <img src="https://www.spacex.com/static/images/locations/south_texas.webp" alt="" class="img-fluid">
+                <img src="/images/deep_space.jpg" data-src="/images/Facilities/4.jpg" data-srcset="/images/Facilities/4.jpg" alt="" class="img-fluid lazy">
                 <div class="container-bg">
                     <p class="location">Texas</p>
                     <h2 class="loc-name">South Texas Launch Site</h2>
@@ -225,7 +225,6 @@ data-animsition-out-duration="800">
         </div>
     </div>
 </div>
-</section>
 
 <script>
 // Scroll Animation
