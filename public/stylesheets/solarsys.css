@@ -931,11 +931,18 @@ dl.infos dd span::after
       font-size: 20%; 
     } 
 }
-@media screen and (min-width: 1000px) 
+@media screen and (max-width: 1250px) and (min-width: 1000px) 
 {
   #universe 
   {
-    font-size: 35%; 
+    font-size: 22%; 
+  }
+}
+@media screen and (min-width: 1255px)
+{
+  #universe
+  {
+    font-size: 35%;
   }
 }
    

@@ -13,7 +13,7 @@ data-animsition-out-duration="900">
 </div>
 <div class="container-fluid" id="table">
   <div class="row" style="height:100%;">
-      <div class="col-md-6">
+      <div class="col-md-6" style="margin: auto;">
         <div class="container container-bg" id="table-container">
           <div class="display-5 tabel-name"><%=rocket.Name%></div>
           <div class="display-3 table-sub">Overview</div>
@@ -46,15 +46,13 @@ data-animsition-out-duration="900">
 </div>
 <div class="container-fluid"  id="animation"  style="height: 100vh;margin-top: 5%;">
   <div class="row" style="height:100%;">
-  <div class="col-md-8">
-  <div class="container" id="video-container">
-  <video autoplay loop muted width="100%" height="100%" preload="auto">
-    <source src="/Animations/<%=rocket.Name%>.mp4" type="video/mp4">
-  </video>
+  <div class="col-md-6" style="margin: auto;">
+    <video autoplay loop muted preload="auto">
+      <source src="/Animations/<%=rocket.Name%>.mp4" type="video/mp4">
+    </video>
   </div>
-  </div>
-  <div class="col-md-4">
-  <div class="container rocket-animation-container container-bg">
+  <div class="col-md-6" style="margin: auto">
+  <div class="container rocket-animation-container container-bg" style="text-align: center;">
   <div class="display-4 rocket-header"><%=rocket.Header%></div>
   <br>
   <%-rocket.Content%>
@@ -133,6 +131,12 @@ var size =
     $("#animation").css("width",window.innerWidth);
     $("#first").css("line-height","1.8em");
     $("#first").addClass("lead");
+    window.addEventListener('resize',()=>{
+      $("#table").css("height",window.innerHeight);
+      $("#table").css("width",window.innerWidth);
+      $("#animation").css("height",window.innerHeight);
+      $("#animation").css("width",window.innerWidth);
+    })
 // Threejs code
     //Variables for setup
     let container;
