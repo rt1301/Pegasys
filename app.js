@@ -7,13 +7,78 @@ var express             = require('express'),
     Query               = require('./models/query.js'),
     expressSanitizer    = require('express-sanitizer'),
     flash               = require('connect-flash'),
-    seedDB              = require("./seeds.js");
+    seedDB              = require("./seeds.js"),
+    adminBro            = require("admin-bro"),
+    adminBroExpress     = require("admin-bro-expressjs");
+    const formidableMiddleware = require('express-formidable');
+adminBro.registerAdapter(require("admin-bro-mongoose"));
 var unshow = false;
 var show = true;
+// Resources definitions
+const Admin = mongoose.model('Admin', {
+    id: { type: String, required: true },
+    encryptedPassword: { type: String, required: true },
+    role: { type: String, enum: ['admin', 'restricted'], required: true },
+});
+const admin = new adminBro({
+    databases: [mongoose],
+    resources: [{
+        resource: Admin,
+        options: {
+          properties: {
+            encryptedPassword: {
+              isVisible: false,
+            },
+            password: {
+              type: 'string',
+              isVisible: {
+                list: false, edit: true, filter: false, show: false,
+              },
+            },
+          },
+          actions: {
+            new: {
+              before: async (request) => {
+                if(request.payload.record.password) {
+                  request.payload.record = {
+                    ...request.payload.record,
+                    encryptedPassword: await bcrypt.hash(request.payload.record.password, 10),
+                    password: undefined,
+                  }
+                }
+                return request
+              },
+            }
+          }
+        }
+      }],
+    rootPath: '/admin',
+});
+const ADMIN = {
+    email: process.env.ADMIN_EMAIL || 'admin@example.com',
+    password: process.env.ADMIN_PASSWORD || '1234',
+}
+// Build and use a router which will handle all AdminBro routes
+const router = adminBroExpress.buildAuthenticatedRouter(admin,{
+    cookieName: process.env.ADMIN_COOKIE_NAME || 'admin-bro',
+    cookiePassword: process.env.ADMIN_COOKIE_PASSWORD || 'supersecret-and-long-password-for-a-cookie-in-the-browser',
+    authenticate: async (email,password)=>{
+        if(email == ADMIN.email && password == ADMIN.password)
+        {
+            return ADMIN;
+        }
+        else
+        {
+            return null;
+        }
+    }
+});
+app.use(admin.options.rootPath, router);
 app.use(expressSanitizer());
+app.use(formidableMiddleware());
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useUnifiedTopology', true);
-mongoose.connect("mongodb://localhost/pegasys",{ useNewUrlParser: true, useUnifiedTopology: true, });
+mongoose.connect("mongodb://localhost/pegasys",{ useNewUrlParser: true, useUnifiedTopology: true,useFindAndModify:false });
 app.use(express.static(__dirname + "/public"));
 app.use(body.urlencoded({extended : true}));
 app.use(require("express-session")({
@@ -60,8 +125,6 @@ app.get("/updates/:id",function(req, res){
         else
         {
             res.render("show",{show:show,article:article});
-            // console.log(article);
-            // res.redirect("/home");
         }
     })
 });
@@ -105,7 +168,7 @@ app.get("/mission/mars",function(req, res){
 });
 // Contact Page
 app.get("/contact",function(req, res){
-    res.render("contact",{show:show});
+    res.render("contact",{show:show,key:process.env.KEY});
 });
 app.post("/contact",function(req, res){
     var newQuery = req.body.query;
